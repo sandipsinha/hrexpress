@@ -1,0 +1,83 @@
+body, td  { 
+    font: 14px/1.3 verdana, arial, helvetica, sans-serif;
+    }
+    
+h1 { font-size:130%; }
+h2 { font-size:120%; }
+ul { margin-bottom: 2.4em; }
+ul li { margin-bottom:.5em; }
+a:link { color:#33c }    
+a:visited { color:#339 }    
+
+
+/* =validation errors ----------------- */
+div#errorDiv {
+    color:#a33;
+    background-color:#ffffe1;
+    border:1px solid #a33;
+    padding:6px 4px;
+    margin:2em 0 2em 0;
+    }
+div#errorDiv h3 {
+    color:#a33;
+    margin: 0 0 .4em 0;
+    border:none;
+    }
+div#errorDiv p {
+    margin:0 0 .4em 0;
+    }
+
+div.error span {
+    color:#a33;
+    font-weight:bold;
+    }
+form div span.error, table.display span.error {
+    font-weight:bold;
+    color:#a33;
+    padding:0 4px;
+    }
+form input.error {
+    border:2px solid #a33;
+    }
+
+
+/* =order form table ----------------- */
+
+table.display { 
+    border:1px dashed #B8C5DA;
+    margin:1em 0;
+    }
+table.display td  { 
+    text-align:left; 
+    vertical-align:top; 
+    padding:6px 6px;
+    }
+table.display th	{ 
+  text-align:center; 
+  font-size: 14px;
+  padding:6px 8px;
+  background-color:#F1F4F8;
+  border-bottom:1px dashed #B8C5DA;
+  }
+table.display th.first { 
+    text-align:left;
+    }
+table.display td.qty,
+table.display td.cur { 
+    text-align:center;
+    }
+table.display td.label { 
+    text-align:right;
+    }
+table.display td.total { 
+    text-align:right; 
+    font-weight:bold;
+    padding-bottom:18px;
+    }
+table.display td.subtot { 
+    text-align:right; 
+    padding-bottom:18px;
+    }
+table.display input.cur { 
+    text-align:right;
+    }

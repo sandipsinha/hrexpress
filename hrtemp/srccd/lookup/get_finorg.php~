@@ -1,0 +1,12 @@
+<?php
+require_once "../../dataconn/config.php";
+$q = strtolower($_GET["q"]);
+if (!$q) return;
+
+$sql = "select DISTINCT fin_org Name from finance_org where fin_org LIKE '%$q%'";
+$rsd = mysql_query($sql);
+while($rs = mysql_fetch_array($rsd)) {
+	$cname = $rs['Name'];
+	echo "$cname\n";
+}
+?><p><font color="#000000">Not recognized </font></p>

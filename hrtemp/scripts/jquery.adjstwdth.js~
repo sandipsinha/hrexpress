@@ -1,0 +1,35 @@
+$().ready(function() {
+		  var max = $("label[for='actopt']").width();
+        var field1width = $("#actopt").width();
+        var btitlewidth = $("label[for='btitle']").width();
+        var wphonewidth = $("label[for='wphone']").width(); 
+        var fnamewidth = $("#fname").width();
+        
+
+	       $("label[for='fname']").width(max);
+	       $("label[for='rsntype']").width(max);
+	       $("#rsntype").width(fnamewidth);
+       
+      
+
+       $("label[for='location']").width(wphonewidth);
+       $("label[for='btitle']").width(wphonewidth);
+       $("label[for='hr']").width(wphonewidth);
+       $("label[for='comments']").width(wphonewidth);
+       //$("label[for='vp']").width(btitlewidth);
+       $("label[for='dept']").width(wphonewidth);
+       $("label[for='manager']").width(wphonewidth);
+       $("label[for='legal']").width(wphonewidth);
+       $("label[for='finance']").width(wphonewidth);
+       $("label[for='it_end_dt']").width(wphonewidth);
+       $("label[for='empid']").width(wphonewidth);
+       $("#wemail").width(max);
+
+       $('#effdt').datepicker();
+       $('#it_end_dt').datepicker();
+       $('#addnew').slideUp();
+       //$('fieldset.emplid').slideUp();
+
+          
+
+})

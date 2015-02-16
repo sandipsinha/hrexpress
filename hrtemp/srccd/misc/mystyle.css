@@ -1,0 +1,34 @@
+body {background-image:url("./images/polycom.gif");
+background-repeat:no-repeat;
+}
+
+h2
+{
+position:relative;
+ top:20px;
+ left:500px;
+}
+
+#leftcol {     
+  top: 100px;     
+  width: 500px; 
+  float:left;
+  margin-left: 250px;
+  color:blue;
+  } 
+
+#rightcol {     
+  top: 100px;     
+  width: 500px; 
+  float:right;
+  margin-right:250px;
+  color:red;
+  }
+  
+ #DivMsg{
+ position:absolute;     
+  top: 380px;     
+  width: 800px; 
+  margin-left:400px;
+  color:purple;
+    }

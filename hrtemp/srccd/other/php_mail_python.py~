@@ -1,0 +1,4 @@
+<?php
+$stmt = 'python ../pythcd/read_temp.py '. 4361;
+echo exec($stmt);
+?>

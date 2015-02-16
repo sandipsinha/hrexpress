@@ -1,0 +1,30 @@
+#navMain ul{
+padding:5px;
+margin:0;
+margin-left:10px;
+list-style: url('/images/arrow.png');
+font-size: 15px;
+color:yellow; 
+} /*Reset the default padding/margin and set it as required*/
+
+#navMain {
+/*color:#c3c3c3;*/
+font-family:Tahoma, Geneva, sans-serif;
+/*background:#eff3f0;*/
+border:none;
+width:150px;
+padding:30px;
+position:relative;
+color:black;
+text-decoration: none;
+} /* Change color and font*/
+
+.navMainLine {
+position:absolute;
+top:40px;
+} 
+
+#navMain h4{
+font-family:Trebuchet MS1, Helvetica, sans-serif;
+margin-top:0;
+} /*Change font of the title*/

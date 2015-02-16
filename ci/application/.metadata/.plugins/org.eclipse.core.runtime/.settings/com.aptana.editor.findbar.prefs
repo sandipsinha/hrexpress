@@ -1,0 +1,3 @@
+FIND_BAR_DECORATOR_FIND_ENTRIES=\#\r\n\#Wed Feb 27 09\:22\:11 PST 2013\r\n6\=text\r\n5\=success\r\n4\=slideUp\r\n3\=$this->input->post(\r\n2\=),\r\n1\=$form_data[\r\n0\=]\r\n7\=h1\r\n
+FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\r\n\#Wed Feb 27 09\:22\:11 PST 2013\r\n4\=show\r\n3\=$form_data[\r\n2\=],\r\n1\=$this->input->post(\r\n0\=)\r\n
+eclipse.preferences.version=1

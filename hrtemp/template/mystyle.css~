@@ -1,0 +1,73 @@
+body {background-image:url("./images/polycom.gif");
+background-repeat:no-repeat;
+}
+h2
+{
+position:relative;
+ top:20px;
+ left:500px;
+}
+#leftcol {    
+  top: 100px;    
+  width: 500px;
+  float:left;
+  margin-left: 250px;
+  color:blue;
+  }
+#rightcol {    
+  top: 100px;    
+  width: 500px;
+  float:right;
+  margin-right:250px;
+  color:red;
+  }
+messagebox{
+ position:absolute;
+ width:100px;
+ margin-left:30px;
+ border:1px solid #c93;
+ background:#ffc;
+ padding:3px;
+}
+.messageboxok{
+ position:absolute;
+ width:auto;
+ margin-left:30px;
+ border:1px solid #349534;
+ background:#C9FFCA;
+ padding:3px;
+ font-weight:bold;
+ color:#008000;
+}
+.messageboxerror{
+ position:absolute;
+ width:auto;
+ margin-left:30px;
+ border:1px solid #CC0000;
+ background:#F7CBCA;
+ padding:3px;
+ font-weight:bold;
+ color:#CC0000;
+}
+
+#f1_upload_process{
+    z-index:100;
+    position:absolute;
+    visibility:hidden;
+    text-align:center;
+    width:400px;
+    margin:0px;
+    padding:0px;
+    background-color:#fff;
+    border:1px solid #ccc;
+    }
+     
+form{
+    text-align:center;
+    width:390px;
+    margin:0px;
+    padding:5px;
+    background-color:#fff;
+    border:1px solid #ccc;
+     
+    }

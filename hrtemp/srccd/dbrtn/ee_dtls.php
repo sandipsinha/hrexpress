@@ -1,0 +1,124 @@
+<?php
+ require_once "../../dataconn/config.php";
+ require_once "../../includes/html_table.class.php";
+ require_once "rolechk.php";
+ session_start(); 
+ 
+$empl_type = 'temp';
+
+
+$sql = "select business_title 'Business Title', a.location Location,a.dept Department ,d.name Supervisor,a.effdt 'Effective Date', 
+it_end_date 'Planned Exit Date', a.finance 'Fin Div', a.financial_org 'Financial Org', b.evp EVP , c.name 'HR Contact', a.busn_phone 'Business Phone',a.busn_email 'Work Email', classification Classification, 
+CASE a.type 
+When 'C' then 'Consultants/Vendors' 
+When 'O' then 'Other' 
+When 'F' then 'Fixed Term Contractor' 
+When 'T' then 'Temporary Contractor' 
+When 'W' then 'Temporary Worker' 
+Else 'Converted' End 'Temp Type', 
+reason 'Reason', 
+CASE a.action_type 
+When 'hir' then 'New Hire' 
+When 'reh' then 'ReHired' 
+When 'xtn' then 'Extension' 
+When 'ter' then 'Terminated' 
+When 'cnv' then 'Converted to Regular' 
+Else 'Data Change' End 'Action_Descr', 
+a.legal_entity,
+a.req_num Requisition_Number, 
+a.r12_company,
+a.r12_product,
+a.r12_pol_service,
+a.r12_pol_region,
+a.pol_inter_company,
+comments Comments 
+from consultants a 
+left join hr_mgmt_lvl b on a.supervisor = b.emplid 
+left join emp_current_vw c on a.hr_contact = c.emplid 
+left join emp_current_vw d on a.supervisor = d.emplid    
+where id = ". $_POST['datastring'] ." order by a.id,a.effdt desc";
+//echo 'The sql is ' . $sql;
+ $rsq = mysql_query($sql);
+
+//if  (!mysql_num_rows($rsq) ) {
+if  ($_POST['emptemp']  == 'Y' ) {    
+    
+    $sql1 = "select a.emplid 'Employee Id', a.effdt 'Effective Date', a.empl_status 'Employee Status', a.name Name, a.bus_title 'Business Title', a.busn_email 'Work Email', a.busn_phone 'Work Phone', 
+a.dept Department, a.legal_entity 'Legal Entity', a.location Location, vp.name VP,sup.name Supervisor , a.pref_name 'Preferred Name', a.hire_dt 'Hire Date', a.cmpny_sen_dt 'Seniority Date',a.service_dt 'Service Date', 
+a.Region, a.division Division , a.r12_company,a.r12_product,a.r12_pol_service,a.r12_pol_region,a.pol_inter_company from emp_current_vw a
+left join  emp_current_vw vp on a.vp = vp.emplid
+left join  emp_current_vw sup on a.supervisor= sup.emplid where a.emplid =   '". $_POST['datastring'] . "'";
+
+    $empl_type = 'reg';
+    $rsq = mysql_query($sql1);
+ 
+    if (!mysql_num_rows($rsq) )  {
+        die("Could not pull up the name from the database");
+        //die($sql1);
+    }
+    echo '<h3> CURRENT JOB DATA FOR ' . $_POST['namestr']  . " Employee id = " . $_POST['datastring'] .'</h3>' ; 
+ }
+ else
+ {
+  echo '<h3> JOB HISTORY FOR ' . $_POST['namestr']  . " Temp id = " . $_POST['datastring'] .'</h3>' ; 
+  }
+ 
+$tbl = new HTML_Table(null, 'display', 0, 0, 4);
+$tbl->addRow('HR TEMP TRACKING TOOL',' ',' ', array('colspan'=>12));
+$tbl->addRow();
+$a = 0;
+$row = 0;
+$line=0;
+while($rs = mysql_fetch_assoc($rsq)) {
+    // Loop over all fields per row
+        $idstr = $_POST['datastring'];
+   
+    foreach($rs as $field => $value) {
+           //if ($row==0 ){       
+                    $tbl->addCell($field);
+                    if ($field != 'Action_Descr'){ 
+                        $tbl->addCell($value,'cellClass');
+                        }
+                        else
+                        {
+                        $tbl->addCell($value,'action');
+                        }
+                        
+                    
+                    /*$tbl->addCell(' ');
+                    $tbl->addCell(' ');*/
+        /*           }
+            elseif(($field != 'Id' && $field != 'First Name' && $field != 'Last Name') && $row > 0){
+                    $tbl->addCell($field);
+                    $tbl->addCell($value,'cellClass');
+                    $tbl->addCell(' ');
+                    $tbl->addCell(' ');
+                    }*/
+
+            $a +=1;
+            if ($a == 3)
+             {$tbl->addRow();
+              //$tbl->addCell(' ',' ',' ',array('colspan'=>12));
+               $line +=1;        
+               $a=0;}
+
+                       
+    }
+    $tbl->addRow('-----------------------------------------',' ',' ', array('colspan'=>12)); 
+    $row +=1;
+    $tbl->addCell('-----------','-----------------','---------------',array('colspan'=>12));
+    $tbl->addRow(); 
+    $a=0;
+}
+ $tbl->addRow();
+$tbl->addCell(' ',' ',' ',array('colspan'=>12));
+echo $tbl->display();
+echo "<form action='ee_info.php' method='POST'>";
+echo "<input type='hidden' name='id' id='id' value='$idstr'> <br><br>";
+if ($empl_type != 'reg'){
+    echo "<input type='submit' name='edit' value='Edit' >";
+    }
+echo "</form>";
+$_SESSION['id'] = $idstr;
+mysql_close($conn);
+?>

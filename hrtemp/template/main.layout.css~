@@ -1,0 +1,27 @@
+
+.left
+{
+ position:absolute;
+ left:30px;
+ width:350px;
+ }
+ 
+ .center
+ {
+  position:absolute;
+   left:250px;
+ 	width:500px;
+ }
+ .right
+ {
+ 	postion:absolute;
+ 	right: 0px;
+ 	width:300px;
+ }	
+ .myClass
+ {
+ 	width:169px;
+ 	color:red;
+ }
+ 	
+ 	

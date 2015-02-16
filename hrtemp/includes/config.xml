@@ -1,0 +1,11 @@
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="default" class="LoggerAppenderPDO">
+        <param name="dsn" value="mysql:host=hrexpress;dbname=hrexpress" />
+        <param name="user" value="orclsql" />
+        <param name="password" value="tan5321" />
+        <param name="table" value="log" />
+    </appender>
+    <root>
+        <appender_ref ref="default" />
+    </root>
+</configuration>
